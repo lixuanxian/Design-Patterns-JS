@@ -5,11 +5,11 @@ function ShoppingCart(discount) {
 
 ShoppingCart.prototype.setAmount = function(amount) {
     this.amount = amount;
-}
+};
 
 ShoppingCart.prototype.checkout = function() {
-   return this.discount(this.amount); 
-}
+   return this.discount(this.amount);
+};
 
 function guestStrategy(amount) {
     return amount;
@@ -23,15 +23,4 @@ function premiumStrategy(amount) {
     return amount * 0.8;
 }
 
-//example
-var guestCart = new ShoppingCart(guestStrategy);
-guestCart.setAmount(100);
-console.log(guestCart.checkout());
-
-var regularCart = new ShoppingCart(regularStrategy);
-regularCart.setAmount(100);
-console.log(regularCart.checkout());
-
-var premiumCart = new ShoppingCart(premiumStrategy);
-premiumCart.setAmount(100);
-console.log(premiumCart.checkout());
+module.exports = [ShoppingCart, guestStrategy, regularStrategy, premiumStrategy];
